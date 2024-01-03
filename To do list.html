@@ -4,109 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do list</title>
+    <link rel="stylesheet" href="style.toDoList">
+    <script src="js.toDoList"></script>
 </head>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@200&display=swap');
-  *{
-      font-family: Lexend;
-      margin: 0;
-      padding: 0;
-  }
-  .container {
-      width: 100%;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-image: linear-gradient(135deg ,rgb(4, 33, 107),rgb(188, 64, 207)) 
-  }
-  .todolist {
-      border-radius: 20px;
-      background-color: aliceblue;
-      padding: 50px;
-  }
-  .todolist h3 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding-bottom: 20px;}
-  .row{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      align-content: center;
-      background-color: rgb(192, 177, 158);
-      border-radius: 40px;
-      padding-right: 20px;
-  }
-  .todolist input {
-      font-weight: bold;
-     padding: 20px 40px;
-     border-radius: 40px;
-     border: none;
-     background-color: transparent;
-     color: rgb(0, 0, 0);
-     outline: none;
-  }
-  .todolist button {
-      border: none;
-      font-weight: bold;
-      padding: 20px 30px;
-      color: white;
-      border-radius: 40px;
-      background-color: rgb(236, 82, 30);
-      cursor: pointer;
-      margin-right:-21px;
-  }
-  ul li{
-      list-style: none;
-      padding: 20px 35px 2px;
-      font-weight: bold;
-      cursor: pointer;
-      user-select: none;
-      position: relative;
-      font-size: 20px;
-  }
-  ul li::before{
-      content: '';
-      position: absolute;
-      height: 20px;
-      width: 20px;
-      background-image: url(unchecked.png);
-      background-size: cover;
-      background-position: center;
-      top: 20px;
-      left: 1px;
-  }
-  ul li.checked {
-      color: #555 ;
-      text-decoration: line-through;
-  }
-  ul li.checked::before{
-      background-image: url(checked.png);
-  }
-  ul li span {
-      position: absolute;
-      right: 0;
-      top : 7px;
-      height: 40px;
-      width: 40px;
-      font-size: 27px;
-      color: #555;
-      line-height: 40px;
-      text-align: center;
-      border-radius: 14px;
-  }
-  ul li span:hover{
-      background-color: #827f7f83;
-      transition: 0.6s  ;
-      color: aliceblue;
-  }
-  ul li ol{
-      font-size: 10px;
-      color: darkred;
-  }
-  </style>
+
 <body>  
     <div class="container">
         <div class="todolist">
@@ -123,53 +24,9 @@
                 </ul>
         </div>
     </div>
-    
+
 <script>
-    // Declaration of variables
-    const inputBox = document.getElementById('input-box');
-    const listcontainer = document.getElementById('list-container');
 
-    // Take Data from input and add it into to do list
-    function addTask() {
-        if(inputBox.value === '') {
-            alert("You need to write something");
-        }
-        else {
-            let li = document.createElement('li');
-            li.innerHTML = inputBox.value;
-            listcontainer.appendChild(li);
-
-            let span = document.createElement('span');
-            span.innerHTML = '\u00d7' ;
-            li.appendChild(span);
-
-            let ol = document.createElement('ol');
-            ol.innerHTML = 'Do it !' ;
-            li.appendChild(ol);
-            }
-        inputBox.value = "" ;
-    }
-    
-    // change icon from unchecked to checked & span x
-    listcontainer.addEventListener("click", function(e){
-        if(e.target.tagName === "LI"){
-            e.target.classList.toggle("checked");
-            svData();
-        }
-        else if(e.target.tagName === "SPAN"){
-            e.target.parentElement.remove();
-            svData();
-        }
-    }, false);
-
-    // save data until we refrech page
-    function svData() {
-        localStorage.setItem('data', listcontainer.innerHTML);
-    }
-    function showTask() 
-    {listcontainer.innerHTML = localStorage.getItem("data");
-    }
-    showTask()
 </script>
     
 
